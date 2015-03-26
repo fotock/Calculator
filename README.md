@@ -1,4 +1,7 @@
 # Calculator
+
+Developing iOS 8 Apps with Swift / Swift iOS 8 应用开发.
+
 Calculator written in Swift. Stanford Open Course on iTunes U.  
 iTunes U 斯坦福大学开放课程, 计算器实例中文版，和英文版功能相同。
 
