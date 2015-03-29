@@ -44,6 +44,29 @@ class 计算大脑
         学习操作(操作.二元操作("−") {$1 - $0})
         学习操作(操作.一元操作("√", sqrt))
     }
+
+    // 第五讲增加部分  开始   -------------------------------
+    typealias 属性列表 = AnyObject
+
+    var 程序: 属性列表 {
+        get {
+            return 操作栈.map { $0.description }
+        }
+        set {
+            if let 操作符号组 = newValue as? Array<String> {
+                var 新栈 = [操作]()
+                for 操作符号 in 操作符号组 {
+                    if let op = 已知操作[操作符号] {
+                        新栈.append(op)
+                    } else if let 数 = NSNumberFormatter().numberFromString(操作符号)?.doubleValue {
+                        新栈.append(.操作数(数))
+                    }
+                }
+                操作栈 = 新栈
+            }
+        }
+    }
+    // 第五讲增加部分  结束   -------------------------------
     
     private func 运算(操作栈:[操作]) -> (结果: Double?, 剩余操作:[操作]) {
         if !操作栈.isEmpty {
